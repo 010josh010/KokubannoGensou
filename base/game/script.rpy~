@@ -1,0 +1,307 @@
+﻿# You can place the script of your game in this file.
+
+# Declare images below this line, using the image statement.
+# eg. image eileen happy = "eileen_happy.png"
+image School= "School_Hallway.jpg"
+image Tsumi="Tsumi.png"
+image Tsumi_eyes_closed="Tsumi_eyes_closed.png"
+image Tsumi_plain="Tsumi_plain.png"
+image Tsumi_dark="Tsumi_dark.png"
+image Tsumi_dark_smile="Tsumi_dark_smile.png"
+image Tsumi_plain_ec="Tsumi_plain_ec.png"
+image Tsumi_plain_mo="Tsumi_plain_mo.png"
+image Tsumi_explanation="Tsumi_explanation.png"
+image Tsumi_mouth_open="Tsumi_mouth_open.png"
+image Maria_normal="Maria_normal.png"
+image Maria_grin="Maria_grin.png"
+image Maria_confused="Maria_confused.png"
+image Maria_hey="Maria_hey.png"
+image Maria_smile="Maria_smile.png"
+image Maria_smile_eyes_closed="Maria_smile_eyes_closed.png"
+image Maria_kyaa="Maria_kyaa.png"
+image Maria_eeh="Maria_eeh.png"
+image Maria_troubled_open="Maria_troubled_open.png"
+image Maria_smile_notice="Maria_smile_notice.png"
+image Maria_embarrassed="Maria_embarrassed.png"
+image Maria_shikatanai="Maria_shikatanai.png"
+image Maria_indifferent="Maria_indifferent.png"
+image classroom="Classroom.jpg"
+image classroom_evening="Classroom_Evening.png"
+image Library="Library.jpg"
+image Locker="School_Locker.jpg"
+image Pool="Pool.png"
+image Bedroom="Bedroom.png"
+image Schoolgrounds="School_Grounds.jpg"
+image test="test.png"
+
+# Declare characters used by this game.
+define m = Character('Maria', color="#1F7A7A")
+define t = Character('Tsumi', color="#FFFFC2")
+define y= Character('You')
+define q= Character("???")
+
+
+# The game starts here.
+label start:
+    scene School 
+    play music "Happy.mp3" fadein 5.0
+    "Its your first day at a new school, and you arrive early."
+    "You look around the hallway until you are approached by a distinguished looking girl in frilly clothing."
+    show Tsumi
+    t   "Welcome to Otsuka High, My name is Morigawa Tsumi. I am the Student Council Vice President."
+    t   " I will be showing you around on your first day."
+    hide Tsumi
+    show Tsumi_mouth_open
+    t   "Well, we'd better get going, Do you have any questions for me before we begin our tour?"
+    menu:
+        "Whats in that book you're holding, it looks old?":
+            jump whatsthatbook
+        "Wow, you are really pretty":
+            jump urpretty
+        "Could we possibly........kiss?":
+             jump kissu
+    label whatsthatbook:
+            t   "Oh this......a friend let me borrow it before they..... "
+            y   "........."
+            hide Tsumi_mouth_open
+            show Tsumi_dark_smile
+            t   "I suppose you could say that it is something really important to me...."
+            t   "Well if there won't be any more questions...Lets start our tour by showing you to our homeroom."
+            jump scene2
+    label urpretty:
+            t   "Well I have to look my best, Many students look up to me you know." 
+            t   "Well if there won't be any more questions...Lets start our tour by showing you to our homeroom."
+            jump scene2
+    label kissu:
+            t   "There shall be no inappropriate contact amongst students." 
+            t   "Well if there won't be any more questions...Lets start our tour by showing you to our homeroom."
+            jump scene2
+   
+    label scene2:
+        hide Tsumi_dark_smile
+        hide Tsumi_mouth_open
+        show Tsumi
+        t       "Follow me, I will show you to the classroom now."
+        hide Tsumi
+        "You follow Tsumi to class." 
+        scene classroom
+        play music "Lounge.mp3" fadein 7.0
+        "You enter an empty classroom. "
+        y       "Where are all of our classmates?" 
+        show Tsumi_dark
+        t       ".........."
+        hide Tsumi_dark
+        show Tsumi_explanation
+        t       "There is a funneral this morning for one of our former classmates. Most of the students are there in observance."
+        t       "It will be just you and I for the time being."
+    menu:
+            "A Funneral.....what happened?":
+                jump whathappened
+            "Don't say anything":
+                jump dontsayanything
+        
+        
+    label whathappened:
+            t   "........ I can't say."
+            jump scene3
+    label dontsayanything:
+            jump scene3
+    label scene3:
+        hide Tsumi_explanation
+        show Tsumi_plain_mo
+        t       "For now, Let's go get you a locker and show you around the rest of the campus."    
+        hide Tsumi_plain_mo
+        "You follow Tsumi around to see the rest of the school."
+        scene Schoolgrounds with fade
+        "You are struck by the natural beauty of the school grounds."
+        
+        "*Suddenly you feel a tug on your right sleeve*"
+        
+        show Maria_normal
+        q       "Nice to meet you! You must be the new student."
+        m       "My name is Maria." 
+        "*Maria hands you a note*"
+    menu:
+        "Take the note":
+            jump takethenote
+        "Don't take the note":
+            jump donttakethenote
+        "Start doing the robot":
+            jump robot
+    
+
+    label takethenote:
+        y       "What's this for?"
+        jump scene4_1
+
+    label donttakethenote:
+        m       "...... I see."
+        jump scene4_2
+    label robot:
+        "*You start doing the robot*"
+        jump scene4_3
+        
+    label scene4_1:
+        hide Maria_normal
+        show Maria_smile
+        m       "Don't open it until you're all alone okay?"
+        "*you scratch your head and are puzzled*"
+        hide Maria_smile
+        show Maria_grin
+        m       "Its a secret okay?"
+        y       "a secret..........."
+        hide Maria_grin
+        show Maria_smile_eyes_closed
+        m       "Thats right....and if you show anybody else....I will kill you..."
+        y       "Okay okay.......I got it." 
+        hide Maria_smile_eyes_closed
+        show Maria_smile_notice
+        m       "Good....... I'll be awaiting your response...hehehe."
+        hide Maria_smile_notice
+        show Maria_normal
+        m       "Bye Bye"
+        hide Maria_normal 
+        "*Maria walks away*"
+        "*she seems to be humming a tune that sounds strangely familiar as she fades into the distance*"
+        "*you put the note in your pocket*"
+
+        jump scene5
+        
+    label scene4_2:
+        hide Maria_normal
+        show Maria_hey
+        m       "You know what.......... I think I like you."
+        y       "huh..........?"
+        hide Maria_hey
+        show Maria_kyaa
+        m       "I said I like you silly."
+        y       "But we just met.... I'm sorry but I don't understand."
+        hide Maria_kyaa
+        show Maria_shikatanai
+        m       "Look... when a girl tells you her feelings....nevermind......."
+        hide Maria_shikatanai
+        show Maria_troubled_open
+        m       "The least you could do is acknowledge me."
+        y       "I'm sorry...this is just so sudden. I mean......."
+        y       "I've never had a cute girl confess to me before...."
+        hide Maria_troubled_open 
+        show Maria_embarrassed
+        m       "Well you'd better not forget it.....okay?"
+        hide Maria_embarrassed
+        show Maria_grin
+        y       "uh....okay......I won't."
+        m       "Well....see you around. Hehehehe."
+        y       "........."
+        m       "Bye Bye"
+        hide Maria_grin
+        "*Maria walks away*"
+        "*she seems to be humming a tune that sounds strangely familiar as she fades into the distance*"     
+     
+        jump scene5
+        
+    label scene4_3:
+        hide Maria_normal
+        show Maria_confused
+        m       "............"
+        hide Maria_confused
+        show Maria_eeh
+        m       "You're weird.........."
+        hide Maria_eeh
+        show Maria_smile_eyes_closed at right
+        show Tsumi_mouth_open at left
+        t       "Ahem.."
+        t       "That was quite a show you put on there, have you thought of trying out for this schools interpretive dance club?"
+        hide Tsumi_mouth_open
+        show Tsumi_eyes_closed at left
+        hide Maria_smile_eyes_closed
+        show Maria_shikatanai at right
+        m       "As if........... I've seen trees that dance better.." 
+        hide Tsumi_eyes_closed
+        show Tsumi at left
+        t       "Well, we had better get to class, the bell is going to ring soon and all the other students should be returning right about now."
+        hide Maria_shikatanai
+        show Maria_indifferent at right
+        t       "Excuse us......We had better get going."
+        hide Tsumi
+        "*Tsumi walks away*"
+        hide Maria_indifferent
+        show Maria_hey
+        m       "Hey...... meet me in the library during lunch break....ok?"
+        y       ".......uh........okay."
+        hide Maria_hey
+        show Maria_grin
+        m       "Hehehehe...."
+        m       "Bye Bye.."
+        hide Maria_grin
+        "*Maria walks away*"
+        "*she seems to be humming a tune that sounds strangely familiar as she fades into the distance*"
+        jump scene5
+        
+    label scene5:
+        stop music fadeout 2.0
+        play music "schoolbell.mp3" noloop 
+        "*The school bell starts to ring*"
+    menu:
+        "Go to class":
+            jump gotoclass
+        
+        "Look around some more":
+            jump lookaround
+        
+
+    label gotoclass:
+        "*You hurry to the classroom*"
+        jump scene5_1
+        
+    label lookaround:
+        "*You decide to look around the school*" 
+        jump scene5_2
+        
+    label scene5_1:
+        scene classroom
+        play music "Lounge.mp3" fadein 7.0
+        "WIP"
+        return
+        
+    label scene5_2:
+        scene Library
+        play music "Mysterious.mp3" fadein 7.0
+        "WIP"
+        return
+    
+    
+    
+  
+        
+        
+
+        
+
+
+        
+    
+    
+
+            
+        
+        
+
+                
+        
+
+        
+            
+            
+        
+
+        
+        
+    
+
+        
+
+        
+
+
+
+
